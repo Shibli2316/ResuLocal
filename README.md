@@ -1,76 +1,67 @@
-# 🚀 AI-Driven Resume & Cover Letter Builder
+# 🧳 ResuLocal
 
-Welcome to the **AI-Driven Resume & Cover Letter Builder**, a sophisticated local workspace designed to build, edit, audit, and compile print-perfect resumes and matching cover letters.
+> **ResuLocal** is a free, privacy-focused, local-first AI Resume & Cover Letter Builder. It runs entirely on your local machine and uses an intelligent **Single-Page A4 Budgeting Engine** that automatically fits content into an exact page boundary.
 
-This application runs entirely on your local machine and utilizes an intelligent **Single-Page A4 Budgeting Engine** that automatically fits content into an exact page boundary.
+No subscriptions, no cloud trackers, and no paywalls. All resume data is kept private in your browser's database.
 
 ---
 
-## ✨ Key Features
+## ✨ Features at a Glance
 
-### 1. Dynamic Drag-and-Drop Canvas
-*   **HTML5 Drag-and-Drop:** Directly drag and reorder sections (Education, Work Experience, Skills, etc.) between the left and right columns on the live preview canvas.
-*   **Column Snapping:** Rearrange your document on-the-fly to balance whitespace.
+### 1. 🎛️ Live Canvas Drag-and-Drop
+*   Directly grab, drag, and reorder sections (Education, Work Experience, Skills, Projects, etc.) between the left and right columns on the live preview canvas.
+*   The layouts snap and re-arrange reactively to balance columns.
 
-### 2. Pre-designed Layout Templates
-*   **Three Preset Templates:** Instantly reorganize your column hierarchies by applying preset templates:
-    *   *Template 1:* Classic left-heavy work/academic priority.
-    *   *Template 2:* Extra space for organizations and projects.
-    *   *Template 3:* Left-heavy project focus.
+### 2. 🤖 AI Co-Pilot & ATS Audit (Gemini 2.5 Flash)
+*   **ATS Keyword Optimizer:** Cross-references your CV against target job listings to flag missing skills, content gaps, and formatting inconsistencies.
+*   **Contact Info Extractor:** Automatically pulls out the company name, contact email, and the person responsible from job descriptions.
+*   **English/German Cover Letter Writer:** Drafts tailored cover letters in English, with a quick toggle button to view and copy a professional German translation instantly.
 
-### 3. Customizable Typography & Colors
-*   **Independent Picker Controls:** Individually adjust your primary **Theme Color** and the **Dates/Metadata Color** (governing locations, timelines, and subheadings).
-*   **Visual Hierarchy:** Clean font-weight differentiation (Headers `900`, Titles `800`, Sub-metadata `700`) matching modern professional resumes.
+### 3. 📄 A4 Auto-Fit Budgeting Engine
+*   **1-Page Constraint:** Toggle **Auto-Fit** to trigger an iterative layout budgeting loop. The engine dynamically scales font sizes, row gaps, page margins, and line heights in real-time until your CV fits exactly on a single page.
+*   **Custom Color Pickers:** Independently configure your primary **Theme Color** and your **Dates/Location Metadata Color** to establish clear visual hierarchy.
 
-### 4. Clickable PDF Contact Links
-*   **Anchor Mapping:** Add custom URLs and matching display labels (e.g. `github.com/shibli`) for Email, GitHub, LinkedIn, and custom links.
-*   **Clickable Anchors:** Exported PDF files retain full link clickability.
+### 4. 🔗 Clickable PDF Links
+*   Add custom URL endpoints with custom display labels (e.g. `github.com/shibli`) for Email, GitHub, LinkedIn, and websites.
+*   Exported PDF files retain full clickable anchor redirects.
 
-### 5. Custom Sections Creator
-*   **Structural Flex:** Add custom sections in either column and render them as either timeline entries, comma-separated pill tags (like skills), or paragraphs.
-
-### 6. AI Co-Pilot & ATS Analysis
-*   **ATS Optimization Scanner:** Scan resumes against target job descriptions to identify missing keywords and check formatting compliance.
-*   **AI Cover Letter Writer:** Automatically draft targeted cover letters based on your selected resume profile and the job posting.
-*   **Content Library:** Save variations of bullet points, summaries, and skills to quickly swap them in and out.
+### 5. 📦 Self-Hosted & Offline-Capable
+*   Runs inside a lightweight Docker container.
+*   Bundles a headless Chromium instance to generate clean, print-perfect PDFs without raw browser margins, headers, or footers.
 
 ---
 
 ## 🔑 Configuring the Gemini AI API Key
 
-To enable the automated AI cover letter builder and ATS keyword scanning features, you need to configure your Google Gemini API key:
+To enable the cover letter generator, metadata extraction, and ATS scanning:
 
-1. Obtain a free API key from the [Google AI Studio](https://aistudio.google.com/).
-2. Create a file named `.env` in the root folder of the project.
-3. Add your key to the file:
+1. Obtain a free API key from [Google AI Studio](https://aistudio.google.com/).
+2. Create a file named `.env` in the project root.
+3. Write your key:
    ```env
    GEMINI_API_KEY=your_actual_gemini_api_key_here
    ```
-
-*Note: Next.js will read this key automatically when running locally, and Docker Compose will forward it into the running container.*
 
 ---
 
 ## 🚀 How to Run the App
 
-You can launch the app locally either using **Docker Compose** (recommended) or **Node.js**.
-
 ### Option A: Using Docker (Recommended)
-This is the simplest way to run the application, as it automatically provisions the Chromium browser binary required for Puppeteer PDF printing:
+Docker automatically configures Puppeteer and Chromium dependencies for PDF generation:
 
 1.  Make sure you have Docker and Docker Compose installed.
-2.  Launch the environment:
+2.  Launch the container stack:
     ```bash
     docker-compose up --build
     ```
 3.  Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Option B: Using Node.js locally
-1.  Install dependencies:
+1.  Install packages:
     ```bash
     npm install
     ```
-2.  Start the development server:
+2.  Start the Next.js dev server:
     ```bash
     npm run dev
     ```
@@ -80,25 +71,19 @@ This is the simplest way to run the application, as it automatically provisions 
 
 ## 🛠️ Step-by-Step User Guide
 
-### 1. Creating and Managing Resumes
-*   On the dashboard home page, click **Create New Resume** or edit the seeded **Ahmad - Working Student** template.
-*   You can delete custom resumes, rename them, and save multiple copies of your profile.
+### 1. Creating and Swapping Resume Copies
+*   On the dashboard page, click **Create New Resume** or edit the seeded template.
+*   You can clone resumes, rename them, or delete custom profiles. Each resume has isolated style settings and custom section lists.
 
-### 2. Customizing Styles & Auto-Fit
-*   **Auto-Fit to 1 Page:** Toggle the **Auto-Fit** switch in the layout bar. The application will run a layout budgeting loop, gradually compressing padding, margins, gaps, and font size in real-time until your resume fits exactly onto a single page without overflowing.
-*   **Manual Spacing Sliders:** Turn off Auto-Fit to manually adjust font sizes, line heights, page margins, and section spacing.
+### 2. Tuning Layout Presets
+*   Select between **Template 1**, **Template 2**, or **Template 3** directly above the canvas preview to instantly swap section hierarchies (e.g. left vs right column distribution).
+*   Add **Custom Sections** dynamically and style them as timeline lists, tag clouds (for skills/interests), or text blocks.
 
-### 3. Dragging & Reordering Sections
-*   Hover over any section on the right-hand **Preview Canvas**. 
-*   A grab handle and a dashed border will appear.
-*   Click and drag the section card. You will see empty dropzones snap open at the bottom of the columns.
-*   Drop the section in your desired location to update the layout instantly.
+### 3. Using the Snippet Content Library
+*   Click the bookmark icon next to any work experience highlight or summary input to save it.
+*   Open the **Content Library** tab to insert saved bullet points or summary variations to quickly adapt your CV for different job openings.
 
-### 4. Adding Contact Links
-*   In the **Contact Info** form tab, click **Add Link**.
-*   Select the link type (e.g. GitHub), enter the display label (what will show on the sheet), and the destination URL.
-*   Clicking **Export PDF** will generate an A4 document with clickable links.
+---
 
-### 5. Swapping Content using the Library
-*   Whenever you edit experience bullet points or summaries, you will see a **Save to Library** bookmark icon next to the input.
-*   Save text snippets to your local Content Library, and click the **Bookmark/Library** button to quickly fetch and paste saved variations for targeted job applications.
+## 🏗️ Technical Architecture
+For detailed information regarding state mutations (Zustand + Immer), database hydration, and Puppeteer PDF printing sequences, check out [ARCHITECTURE.md](file:///c:/Users/91790/Documents/Germany/Job/resumeBuilder/ARCHITECTURE.md).
