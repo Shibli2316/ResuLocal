@@ -43,7 +43,17 @@ An all-in-one editing interface. Build your sections on the left-hand form input
 
 ![ResuLocal Editor Workspace](/public/docs/editor.png)
 
-### 3. Central Content Snippet Library
+### 3. AI Cover Letter Architect
+Paste your target job listing details to draft a tailored cover letter. Renders extracted contact metadata parameters (company name, recruiter name, contact email) with copy buttons, supports toggling English/German language views, and lists resume enhancement guidelines.
+
+![AI Cover Letter Architect](/public/docs/cover_letter.png)
+
+### 4. Deep ATS Simulation Scanner
+Runs a local audit comparing the active resume against the job description to calculate keyword match scores, lists content/experience gaps, and lists suggested keyword adjustments.
+
+![Deep ATS Simulation Scanner](/public/docs/ats_simulator.png)
+
+### 5. Central Content Snippet Library
 Save bullet point and profile summary variations. This helps you quickly swap achievements depending on the target role you are applying to.
 
 #### Bullet Points Snippets
