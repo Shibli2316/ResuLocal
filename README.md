@@ -31,6 +31,53 @@
 
 ---
 
+## 📸 Visual Walkthrough & System Mechanics
+
+### 1. The Portfolio Dashboard
+Manage and coordinate multiple portfolios. Blueprints can be duplicated, customized, and edited independently.
+
+![ResuLocal Dashboard](/public/docs/dashboard.png)
+
+### 2. The Workspace Editor & Canvas Preview
+An all-in-one editing interface. Build your sections on the left-hand form inputs and watch the A4 single-page sheet preview adjust on the right-hand side. Here you can apply layout templates, tune metadata colors, drag sections to reorder, or toggle the real-time auto-fit engine.
+
+![ResuLocal Editor Workspace](/public/docs/editor.png)
+
+### 3. Central Content Snippet Library
+Save bullet point and profile summary variations. This helps you quickly swap achievements depending on the target role you are applying to.
+
+#### Bullet Points Snippets
+![Bullet Points Library](/public/docs/library_bullets.png)
+
+#### Profile Summaries Snippets
+![Profile Summaries Library](/public/docs/library_summaries.png)
+
+#### Skills & Technologies Lists
+![Skill Lists Library](/public/docs/library_skills.png)
+
+---
+
+## 🤖 How the AI Generation Engine Works
+
+The co-pilot parses and compiles job-specific documents using a multi-phase semantic alignment flow:
+
+```mermaid
+graph TD
+    A[Raw CV Details + Spacing Styles] --> C(Gemini 2.5 Flash Engine)
+    B[Target Job Description Text] --> C
+    C --> D[1. Tailored English Cover Letter]
+    C --> E[2. Fluent German Translation]
+    C --> F[3. Extracted Contact Details]
+    C --> G[4. Actionable CV Suggestions]
+```
+
+1.  **Job Analysis:** The user enters the target job listing description.
+2.  **Context Synthesis:** The server endpoints ingest your **current CV details** (experiences, achievements, skills) alongside the job text, passing them directly to the **Google Gemini 2.5 Flash model**.
+3.  **Structured Outputs:** The AI dynamically extracts the recruiter's contact details (Email, Company, Responsible Person), drafts a matching metrics-focused cover letter in English, translates it to German, and suggests updates (missing keywords or frameworks) to add to your CV to increase your selection probability.
+4.  **Dynamic Rescans:** If you update your CV based on the recommendations, you can click generate again. The latest state is submitted, outputting a refreshed letter matching your new achievements.
+
+---
+
 ## 🔑 Configuring the Gemini AI API Key
 
 To enable the cover letter generator, metadata extraction, and ATS scanning:
