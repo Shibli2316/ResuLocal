@@ -2,7 +2,7 @@
 
 > **ResuLocal** is a free, privacy-focused, local-first AI Resume & Cover Letter Builder. It runs entirely on your local machine and uses an intelligent **Single-Page A4 Budgeting Engine** that automatically fits content into an exact page boundary.
 
-No subscriptions, no cloud trackers, and no paywalls. All resume data is kept private in your browser's database.
+**NO SUBSCRIPTIONS**, **NO CLOUD TRACKERS**, and **NO PAYWALLS**. All resume data is kept **COMPLETELY PRIVATE** inside your browser's local database. Built with ❤️ by **AHMAD RAZA SHIBLI**.
 
 ---
 
