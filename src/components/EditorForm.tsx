@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { 
   Collapse, Input, Button, Form, Card, Space, Tooltip, 
-  Select, Modal, List, Tag, Radio, Divider, Alert 
+  Select, Modal, List, Tag, Radio, Divider, Alert, Popconfirm 
 } from 'antd';
 import { 
   useResumeStore, ResumeData, ExperienceItem, EducationItem, 
@@ -630,21 +630,23 @@ export default function EditorForm() {
                     }}
                   />
                 </div>
-                <Button 
-                  danger 
-                  type="primary" 
-                  size="small"
-                  icon={<Trash2 size={12} />}
-                  onClick={() => {
-                    Modal.confirm({
-                      title: 'Delete Custom Section',
-                      content: `Are you sure you want to delete "${customSec.title}"? All section data will be lost.`,
-                      onOk: () => deleteCustomSection(customSec.id)
-                    });
-                  }}
+                <Popconfirm
+                  title="Delete Custom Section"
+                  description={`Are you sure you want to delete "${customSec.title}"? All section data will be lost.`}
+                  onConfirm={() => deleteCustomSection(customSec.id)}
+                  okText="Yes, Delete"
+                  cancelText="No"
+                  okButtonProps={{ danger: true, className: '!bg-red-600 hover:!bg-red-500' }}
                 >
-                  Delete Section
-                </Button>
+                  <Button 
+                    danger 
+                    type="primary" 
+                    size="small"
+                    icon={<Trash2 size={12} />}
+                  >
+                    Delete Section
+                  </Button>
+                </Popconfirm>
               </div>
 
               {/* Text Area Type */}
