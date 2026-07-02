@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { 
   Collapse, Input, Button, Form, Card, Space, Tooltip, 
-  Select, Modal, List, Tag, Radio, Divider 
+  Select, Modal, List, Tag, Radio, Divider, Alert 
 } from 'antd';
 import { 
   useResumeStore, ResumeData, ExperienceItem, EducationItem, 
@@ -549,17 +549,44 @@ export default function EditorForm() {
         {/* Skills */}
         <Panel header={<span className="font-bold text-slate-700">Skills</span>} key="skills">
           {data.skills.map((item, index) => (
-            <div key={item.id} className="flex flex-col gap-1 border-b border-slate-100 pb-3 mb-3 last:border-0 last:pb-0">
-              <div className="flex gap-2">
-                <Input placeholder="Category" value={item.name} className="font-bold w-1/3" onChange={(e) => {
-                  const next = [...data.skills]; next[index].name = e.target.value; updateField('skills', next);
-                }} />
-                <Input placeholder="Skills (comma separated)" value={item.items} className="flex-1" onChange={(e) => {
-                  const next = [...data.skills]; next[index].items = e.target.value; updateField('skills', next);
-                }} />
-                <Button type="text" danger icon={<Trash2 size={14} />} onClick={() => updateField('skills', data.skills.filter(x => x.id !== item.id))} />
+            <Card 
+              key={item.id} 
+              size="small" 
+              className="mb-3 border-slate-200 bg-slate-50/50"
+            >
+              <div className="flex justify-between items-end mb-2">
+                <div className="flex-1 mr-3">
+                  <label className="text-xs text-slate-500 block mb-1 font-semibold">Skill Category Name</label>
+                  <Input 
+                    placeholder="e.g. Frontend, Backend, Languages" 
+                    value={item.name} 
+                    onChange={(e) => {
+                      const next = [...data.skills]; next[index].name = e.target.value; updateField('skills', next);
+                    }} 
+                  />
+                </div>
+                <Button 
+                  danger 
+                  type="primary" 
+                  size="small"
+                  icon={<Trash2 size={12} />}
+                  onClick={() => updateField('skills', data.skills.filter(x => x.id !== item.id))}
+                >
+                  Delete Category
+                </Button>
               </div>
-            </div>
+
+              <div>
+                <label className="text-xs text-slate-500 block mb-1 font-semibold">Pills tags (comma-separated)</label>
+                <Input 
+                  placeholder="e.g. React, TypeScript, Node.js" 
+                  value={item.items} 
+                  onChange={(e) => {
+                    const next = [...data.skills]; next[index].items = e.target.value; updateField('skills', next);
+                  }} 
+                />
+              </div>
+            </Card>
           ))}
           <Button type="dashed" block onClick={addSkill} icon={<Plus size={14} />}>Add Skill Category</Button>
         </Panel>
@@ -645,7 +672,7 @@ export default function EditorForm() {
                   <Input 
                     value={customSec.pills.join(', ')}
                     onChange={(e) => {
-                      const list = e.target.value.split(',').map(s => s.trim());
+                      const list = e.target.value.split(',').map((s, idx, arr) => idx === arr.length - 1 ? s : s.trim());
                       updateResumeData((draft) => {
                         const target = draft.customSections.find(c => c.id === customSec.id);
                         if (target) target.pills = list;

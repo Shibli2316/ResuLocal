@@ -29,7 +29,10 @@ export async function POST(req: Request) {
 
       Tasks:
       1. Write a highly tailored, metrics-driven cover letter in English (300-400 words) based on the candidate's actual experience and projects. Do not invent details.
+         - You MUST use a standard professional business layout: a formal Salutation, 3-4 body paragraphs separated by double newlines (\\n\\n), and a formal sign-off.
+         - You MUST use markdown double asterisks ** to bold critical details (such as company name, target position, key candidate skills, achievements, and impact metrics) to make the cover letter stand out visually.
       2. Translate this exact English cover letter into professional German.
+         - Maintain the identical business layout, double-newline paragraph separations (\\n\\n), and markdown double asterisks ** bold formatting.
       3. Extract the name of the company, contact email, and the person responsible from the job description (use "Not Found" if not explicitly mentioned or clearly inferable).
       4. Provide a list of 3-5 specific suggestions for key points the candidate should update, change, or add in their CV (e.g. adding specific technical skills, projects, or metrics) to improve their chances of selection for this specific role.
 

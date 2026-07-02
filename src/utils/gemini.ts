@@ -101,3 +101,46 @@ ${name}`;
     ]
   };
 };
+
+export const getMockTesterReport = (userLetter: string, jobTitle: string) => {
+  return {
+    score: 85,
+    grammarErrors: [
+      {
+        original: "thier",
+        correction: "their",
+        reason: "Spelling error: 'thier' should be spelled 'their'."
+      },
+      {
+        original: "i am writing",
+        correction: "I am writing",
+        reason: "Capitalization: Pronoun 'I' should always be capitalized."
+      }
+    ],
+    improvementPoints: [
+      "Incorporate more quantitative metrics or percentage-based outcomes from your past roles.",
+      `Tailor the introduction to highlight your specific interest in the ${jobTitle || 'target'} position.`,
+      "Use bullet points for lists of projects or key accomplishments to improve layout readability."
+    ],
+    formattedLetter: `**John Doe**
+Berlin, Germany
+john.doe@example.com | +49 123 4567890
+
+Hiring Manager
+Recruitment Committee
+
+Subject: Application for **${jobTitle || 'Software Developer'}**
+
+Dear Hiring Manager,
+
+I am writing to express my enthusiastic interest in the **${jobTitle || 'Software Developer'}** position. With my strong background in developing scalable web applications and optimizing database query performance, my background aligns perfectly with your team's current initiatives.
+
+During my tenure at **Tech Innovations GmbH**, I contributed to a cloud-based web application, optimizing search query speeds by 40% and improving page load latency. I also spearheaded the frontend overhaul of the customer dashboard using React, Tailwind CSS, and Next.js, significantly improving UI/UX responsiveness.
+
+I look forward to the possibility of discussing how my technical background and proactive approach can contribute to your team.
+
+Sincerely,
+
+John Doe`
+  };
+};
