@@ -69,7 +69,8 @@ export default function EditorWorkspace() {
         body: JSON.stringify({ 
           resumeData: currentResume.data, 
           styleSettings: currentResume.style,
-          sections: currentResume.sections
+          sections: currentResume.sections,
+          actualPages: layoutReport ? layoutReport.actualPages : 1
         })
       });
 

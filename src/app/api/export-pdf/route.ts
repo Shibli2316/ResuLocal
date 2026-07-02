@@ -4,7 +4,7 @@ import puppeteer from 'puppeteer';
 export async function POST(req: Request) {
   let browser = null;
   try {
-    const { resumeData, styleSettings, sections } = await req.json();
+    const { resumeData, styleSettings, sections, actualPages } = await req.json();
 
     if (!resumeData || !styleSettings) {
       return NextResponse.json({ error: 'Missing resumeData or styleSettings' }, { status: 400 });
@@ -30,6 +30,17 @@ export async function POST(req: Request) {
     browser = await puppeteer.launch(launchOptions);
     const page = await browser.newPage();
 
+    const pagesToPrint = Number(actualPages) || 1;
+    console.log('PDF Export Route: actualPages received from client =', pagesToPrint);
+
+    // Set page viewport to match pixel A4 height limits exactly (width: 794px)
+    const printHeight = (pagesToPrint === 2) ? 2245 : 1123;
+    await page.setViewport({
+      width: 794,
+      height: printHeight,
+      deviceScaleFactor: 1,
+    });
+
     // Define the host URL. In Docker, the container can call localhost if next is running inside the same container.
     const appUrl = process.env.APP_URL || 'http://localhost:3000';
     
@@ -53,6 +64,7 @@ export async function POST(req: Request) {
     const pdfBuffer = await page.pdf({
       format: 'A4',
       printBackground: true,
+      pageRanges: (actualPages === 2) ? '1-2' : '1',
       margin: {
         top: '0px',
         bottom: '0px',

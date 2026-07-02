@@ -64,23 +64,40 @@
 
 /* Print specific styles (applied when printing or rendering PDF) */
 @media print {
-  body {
+  html, body {
     background: white !important;
     margin: 0 !important;
     padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+  
+  /* Collapse outer parent wrappers and disable flex/gaps during printing */
+  .bg-white.min-h-screen,
+  .bg-white.min-h-screen > div {
+    min-height: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0 !important;
+    display: block !important;
   }
   
   .resume-page-canvas {
+    position: relative !important;
     width: 210mm !important;
     height: 297mm !important;
     box-shadow: none !important;
     margin: 0 !important;
-    page-break-after: always;
-    page-break-inside: avoid;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+    page-break-inside: avoid !important;
   }
 
   .resume-page-canvas.two-pages {
     height: 594mm !important;
+    page-break-after: avoid !important;
   }
   
   .page-break-line,

@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useRef, useLayoutEffect, useState } from 'react';
-import { 
-  Mail, Phone, MapPin, Github, Linkedin, Globe, 
-  GraduationCap, Briefcase, Code, FileText, 
+import {
+  Mail, Phone, MapPin, Github, Linkedin, Globe,
+  GraduationCap, Briefcase, Code, FileText,
   Users, Award, Languages, Heart, AlertTriangle, GripVertical
 } from 'lucide-react';
-import { 
-  ResumeData, StyleSettings, ResumeSectionOrder, useResumeStore 
+import {
+  ResumeData, StyleSettings, ResumeSectionOrder, useResumeStore
 } from '../store/resumeStore';
 import '../styles/resumeTemplate.css';
 
@@ -32,17 +32,17 @@ export interface LayoutReport {
   };
 }
 
-export default function ResumePreview({ 
-  data, 
-  style, 
-  sections: propSections, 
-  isEditable = false, 
-  onLayoutCalculated 
+export default function ResumePreview({
+  data,
+  style,
+  sections: propSections,
+  isEditable = false,
+  onLayoutCalculated
 }: ResumePreviewProps) {
-  
+
   const canvasRef = useRef<HTMLDivElement>(null);
   const { reorderSections, currentResumeId, resumes } = useResumeStore();
-  
+
   // Read section layout from store if not provided as props
   const activeResume = resumes.find(r => r.id === currentResumeId);
   const sections = propSections || activeResume?.sections || [];
@@ -94,7 +94,7 @@ export default function ResumePreview({
     el.style.setProperty('--resume-section-gap', `${style.sectionGap}px`);
     el.style.setProperty('--resume-line-height', `${style.lineHeight}`);
 
-    const PAGE_HEIGHT_PX = 1122; 
+    const PAGE_HEIGHT_PX = 1122;
     const TWO_PAGE_HEIGHT_PX = 2245;
 
     let currentFontSize = style.fontSize;
@@ -128,7 +128,7 @@ export default function ResumePreview({
           currentLineHeight = Math.max(1.15, currentLineHeight);
 
           applyVars(currentFontSize, currentMargin, currentSectionGap, currentLineHeight);
-          
+
           actualScrollHeight = el.scrollHeight;
           if (actualScrollHeight <= PAGE_HEIGHT_PX) {
             fitsOnePage = true;
@@ -414,8 +414,8 @@ export default function ResumePreview({
 
   return (
     <div className="flex flex-col items-center gap-4 select-none">
-      <div 
-        ref={canvasRef} 
+      <div
+        ref={canvasRef}
         className={`resume-page-canvas ${layoutState.actualPages === 2 ? 'two-pages' : ''}`}
       >
         {/* Header Section */}
@@ -427,14 +427,14 @@ export default function ResumePreview({
               <p className="resume-summary-text">{profile.summary}</p>
             )}
           </div>
-          
+
           <div className="resume-header-right">
             {profile.links && profile.links.map((link) => (
-              <a 
-                key={link.id} 
-                href={formatUrl(link.url, link.type)} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                key={link.id}
+                href={formatUrl(link.url, link.type)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="contact-item-link"
               >
                 <span>{link.label || link.url}</span>
@@ -446,7 +446,7 @@ export default function ResumePreview({
 
         {/* Double-Column Layout */}
         <div className="resume-body-grid">
-          
+
           {/* Left Column */}
           <div className="resume-column-left">
             {leftSections.map((section) => {
@@ -475,10 +475,10 @@ export default function ResumePreview({
                 </div>
               );
             })}
-            
+
             {/* Left dropzone when dragging */}
             {isEditable && draggedSectionId && (
-              <div 
+              <div
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={(e) => handleDrop(e, 'empty-left', 'left')}
                 className="empty-drop-zone hover:drag-over"
@@ -519,7 +519,7 @@ export default function ResumePreview({
 
             {/* Right dropzone when dragging */}
             {isEditable && draggedSectionId && (
-              <div 
+              <div
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={(e) => handleDrop(e, 'empty-right', 'right')}
                 className="empty-drop-zone hover:drag-over"
@@ -528,7 +528,7 @@ export default function ResumePreview({
               </div>
             )}
           </div>
-          
+
         </div>
 
         {layoutState.actualPages === 2 && (
