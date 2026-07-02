@@ -10,6 +10,7 @@ import {
   Typography, message, Badge, Tooltip, Select, Dropdown, Tag 
 } from 'antd';
 import { useResumeStore } from '../store/resumeStore';
+import ApiKeyManager from './ApiKeyManager';
 
 const { TextArea } = Input;
 const { Title, Text } = Typography;
@@ -26,7 +27,7 @@ interface AtsScanReport {
 }
 
 export default function AtsScorePanel() {
-  const { resumes, currentResumeId, updateResumeData } = useResumeStore();
+  const { resumes, currentResumeId, updateResumeData, userApiKey } = useResumeStore();
   const currentResume = resumes.find(r => r.id === currentResumeId);
 
   const [jobDescription, setJobDescription] = useState('');
@@ -50,7 +51,10 @@ export default function AtsScorePanel() {
     try {
       const response = await fetch('/api/ai/ats-scan', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-user-api-key': userApiKey || ''
+        },
         body: JSON.stringify({
           resumeData: currentResume.data,
           jobDescription
@@ -116,6 +120,7 @@ export default function AtsScorePanel() {
       bodyStyle={{ padding: '12px', flex: 1, display: 'flex', flexDirection: 'column' }}
     >
       <div className="flex flex-col gap-3 flex-1">
+        <ApiKeyManager />
         
         {/* Job Description input */}
         <div className="flex flex-col gap-1">

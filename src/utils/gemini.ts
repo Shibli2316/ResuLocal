@@ -1,16 +1,13 @@
 import { GoogleGenAI } from '@google/genai';
 
-// Initialize the Google Gen AI client if the API key is present
-const getGenAIClient = () => {
-  const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-  if (!apiKey) {
-    console.warn("⚠️ GEMINI_API_KEY is not defined. AI features will run in Mock Mode.");
-    return null;
-  }
+// Expose a client helper to dynamically create a GoogleGenAI instance using either client key or server env fallback
+export const getGenAIClientWithKey = (userApiKey?: string | null) => {
+  const apiKey = userApiKey || process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+  if (!apiKey) return null;
   return new GoogleGenAI({ apiKey });
 };
 
-export const genAI = getGenAIClient();
+export const genAI = getGenAIClientWithKey();
 
 export function isAiEnabled(): boolean {
   return !!genAI;

@@ -167,6 +167,12 @@ interface ResumeState {
   // Library actions
   addToLibrary: (category: 'bullet' | 'summary' | 'skill', content: string) => void;
   removeFromLibrary: (id: string) => void;
+
+  // Custom API key state and actions
+  userApiKey: string | null;
+  isUserApiKeyVerified: boolean;
+  setUserApiKey: (key: string | null) => void;
+  setApiKeyVerified: (verified: boolean) => void;
 }
 
 const defaultDummyData: ResumeData = {
@@ -324,9 +330,13 @@ export const useResumeStore = create<ResumeState>()(
         {
           id: 'lib-2',
           category: 'bullet',
-          content: 'Implemented RESTful APIs and modern frontend architectures, improving rendering efficiency and data fetching latency by 30%.'
+          content: 'Implemented RESTful APIs and modern frontend architectures, improving rendering efficiency and data fetching latency by 30%'
         }
       ],
+      userApiKey: null,
+      isUserApiKeyVerified: false,
+      setUserApiKey: (key) => set({ userApiKey: key }),
+      setApiKeyVerified: (verified) => set({ isUserApiKeyVerified: verified }),
 
       addResume: (title) => {
         const id = `resume-${Date.now()}`;

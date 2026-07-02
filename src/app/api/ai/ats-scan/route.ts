@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { genAI, isAiEnabled, getMockAtsReport } from '../../../../utils/gemini';
+import { getGenAIClientWithKey, getMockAtsReport } from '../../../../utils/gemini';
 
 export async function POST(req: Request) {
   try {
@@ -9,7 +9,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing resumeData or jobDescription' }, { status: 400 });
     }
 
-    if (!isAiEnabled() || !genAI) {
+    const userApiKey = req.headers.get('x-user-api-key');
+    const client = getGenAIClientWithKey(userApiKey);
+
+    if (!client) {
       // Fallback Mock Mode
       const mockReport = getMockAtsReport(
         resumeData.profile?.name || 'John Doe',
@@ -32,7 +35,7 @@ export async function POST(req: Request) {
       Evaluate alignment, keywords, potential formatting problems, and content gaps. Enforce the required JSON Schema.
     `;
 
-    const response = await genAI.models.generateContent({
+    const response = await client.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
       config: {

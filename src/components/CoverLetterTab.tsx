@@ -7,11 +7,12 @@ import {
 } from 'lucide-react';
 import { Card, Input, Button, Alert, message, Space, Divider, Tag, Typography } from 'antd';
 import { useResumeStore } from '../store/resumeStore';
+import ApiKeyManager from './ApiKeyManager';
 
 const { TextArea } = Input;
 
 export default function CoverLetterTab() {
-  const { resumes, currentResumeId } = useResumeStore();
+  const { resumes, currentResumeId, userApiKey } = useResumeStore();
   const currentResume = resumes.find(r => r.id === currentResumeId);
 
   const [jobDescription, setJobDescription] = useState('');
@@ -50,7 +51,10 @@ export default function CoverLetterTab() {
     try {
       const response = await fetch('/api/ai/cover-letter', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-user-api-key': userApiKey || ''
+        },
         body: JSON.stringify({
           resumeData: currentResume.data,
           jobDescription
@@ -135,6 +139,7 @@ export default function CoverLetterTab() {
       bodyStyle={{ padding: '12px', flex: 1, display: 'flex', flexDirection: 'column' }}
     >
       <div className="flex flex-col gap-3 flex-1">
+        <ApiKeyManager />
         
         {/* Job description input */}
         <div className="flex flex-col gap-1">
