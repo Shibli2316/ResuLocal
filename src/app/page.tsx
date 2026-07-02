@@ -208,7 +208,7 @@ export default function Dashboard() {
           <Input 
             value={newTitle} 
             onChange={(e) => setNewTitle(e.target.value)} 
-            placeholder="e.g., Ahmad - Machine Learning Lead"
+            placeholder="e.g., John Doe - Machine Learning Lead"
             onPressEnter={handleCreate}
             autoFocus
           />
@@ -229,7 +229,7 @@ export default function Dashboard() {
           <Input 
             value={renameModal.title} 
             onChange={(e) => setRenameModal({ ...renameModal, title: e.target.value })} 
-            placeholder="e.g. Ahmad - Frontend Engineer"
+            placeholder="e.g., John Doe - Frontend Engineer"
             onPressEnter={handleRename}
             autoFocus
           />

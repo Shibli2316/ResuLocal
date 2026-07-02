@@ -44,46 +44,46 @@ export const getMockAtsReport = (resumeName: string, jobTitle: string) => {
 export const getMockCoverLetter = (name: string, role: string, jobDesc: string) => {
   const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   const englishText = `${name}
-Göttingen, Germany
-arshibli19@gmail.com | 015214990547
+Berlin, Germany
+john.doe@example.com | +49 123 4567890
 
 ${date}
 
 Hiring Manager
 Recruitment Committee
 
-Subject: Application for ${role || 'Working Student / Software Engineer'} Position
+Subject: Application for ${role || 'Software Engineer'} Position
 
 Dear Hiring Manager,
 
-I am writing to express my enthusiastic interest in the ${role || 'Software Developer'} position. As a Master's student in Applied Computer Science at the University of Göttingen specializing in software development, machine learning, and database management, my background aligns perfectly with your team's current initiatives.
+I am writing to express my enthusiastic interest in the ${role || 'Software Developer'} position. As a Master's student in Computer Science at the Technical University of Berlin specializing in software development, machine learning, and database management, my background aligns perfectly with your team's current initiatives.
 
-During my tenure at the Göttingen Digital Academy, I actively contributed to the digitization of historical papal charters. By implementing geocoding features and optimizing database query performance, I significantly enhanced archival data indexing efficiency. Additionally, I spearheaded the frontend overhaul of the LiMoST bibliographical interface, creating a modern, streamlined user workflow. These experiences sharpened my skills in Python, React, databases, and responsive UI design.
+During my tenure at Tech Innovations GmbH, I actively contributed to a cloud-based web application. By optimizing database query performance and page load latency, I significantly enhanced indexing efficiency. Additionally, I spearheaded the frontend overhaul of the customer dashboard, creating a modern, streamlined user workflow. These experiences sharpened my skills in Python, React, databases, and responsive UI design.
 
-Your job description highlights a need for developers who are comfortable bridging backend optimization with elegant user interfaces. In my role as Web Lead for the SS AMU SAT satellite operation software, I managed end-to-end design of telemetry pipelines and collaborating across hardware domains. I am eager to apply this rigorous full-stack expertise to your engineering projects.
+Your job description highlights a need for developers who are comfortable bridging backend optimization with elegant user interfaces. In my role as contributor for the Open Source Community, I managed end-to-end design of modern web services. I am eager to apply this rigorous full-stack expertise to your engineering projects.
 
-Thank you for your time and consideration. I look forward to the possibility of discussing how my technical background and proactive working student approach can contribute to your team.
+Thank you for your time and consideration. I look forward to the possibility of discussing how my technical background and proactive approach can contribute to your team.
 
 Sincerely,
 
 ${name}`;
 
   const germanText = `${name}
-Göttingen, Deutschland
-arshibli19@gmail.com | 015214990547
+Berlin, Deutschland
+john.doe@example.com | +49 123 4567890
 
 ${date}
 
 Personalabteilung
 Auswahlkommission
 
-Betreff: Bewerbung als ${role || 'Werkstudent / Softwareentwickler'}
+Betreff: Bewerbung als ${role || 'Softwareentwickler'}
 
 Sehr geehrte Damen und Herren,
 
-ich schreibe Ihnen, um mein großes Interesse an der Position als ${role || 'Softwareentwickler'} zu bekunden. Als Masterstudent der Angewandten Informatik an der Universität Göttingen mit Schwerpunkt Softwareentwicklung, maschinelles Lernen und Datenbankmanagement passt mein Profil ideal zu den aktuellen Projekten Ihres Teams.
+ich schreibe Ihnen, um mein großes Interesse an der Position als ${role || 'Softwareentwickler'} zu bekunden. Als Masterstudent der Informatik an der Technische Universität Berlin mit Schwerpunkt Softwareentwicklung, maschinelles Lernen und Datenbankmanagement passt mein Profil ideal zu den aktuellen Projekten Ihres Teams.
 
-Während meiner Tätigkeit an der Göttinger Akademie der Wissenschaften habe ich aktiv an der Digitalisierung historischer Papsturkunden mitgewirkt. Durch die Implementierung von Geocodierungsfunktionen und die Optimierung der Datenbankleistung konnte ich die Effizienz der Datenindizierung erheblich steigern. Darüber hinaus leitete ich die Überarbeitung des LiMoST-Bibliotheks-Interfaces, um ein modernes und benutzerfreundliches Frontend zu schaffen.
+Während meiner Tätigkeit bei der Tech Innovations GmbH habe ich aktiv an einer cloudbasierten Webanwendung mitgewirkt. Durch die Optimierung der Datenbankleistung konnte ich die Effizienz steigern. Darüber hinaus leitete ich die Überarbeitung des Kunden-Dashboards, um ein modernes und benutzerfreundliches Frontend zu schaffen.
 
 Vielen Dank für Ihre Zeit und Berücksichtigung. Ich freue mich darauf, in einem persönlichen Gespräch zu erörtern, wie mein technischer Hintergrund Ihr Team verstärken kann.
 
@@ -94,13 +94,13 @@ ${name}`;
   return {
     coverLetter: englishText,
     coverLetterGerman: germanText,
-    companyName: "Göttingen Academy of Sciences",
-    contactEmail: "recruitment@goettingen-academy.de",
+    companyName: "Tech Innovations Academy",
+    contactEmail: "recruitment@techinnovations.de",
     personResponsible: "Hiring Manager",
     cvSuggestions: [
-      "Add direct percentage metrics to your Göttingen Academy experience descriptions.",
-      "Incorporate key matching keywords like geocoding, database query performance, and front-end optimization directly into your Skills section.",
-      "List Git and Docker under your Technical Skills section as they are explicitly requested."
+      "Add direct percentage metrics to your Tech Innovations experience descriptions.",
+      "Incorporate key matching keywords like database query performance and front-end optimization directly into your Skills section.",
+      "List AWS and Kubernetes under your Technical Skills section as they are explicitly requested."
     ]
   };
 };

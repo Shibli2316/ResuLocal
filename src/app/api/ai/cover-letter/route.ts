@@ -12,8 +12,8 @@ export async function POST(req: Request) {
     if (!isAiEnabled() || !genAI) {
       // Fallback Mock Mode matching the new structure
       const mockResult = getMockCoverLetter(
-        resumeData.profile?.name || 'Ahmad Raza Shibli',
-        resumeData.profile?.role || 'Working Student',
+        resumeData.profile?.name || 'John Doe',
+        resumeData.profile?.role || 'Software Engineer',
         jobDescription
       );
       return NextResponse.json(mockResult);

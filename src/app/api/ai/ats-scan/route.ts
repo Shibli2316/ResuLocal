@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     if (!isAiEnabled() || !genAI) {
       // Fallback Mock Mode
       const mockReport = getMockAtsReport(
-        resumeData.profile?.name || 'Ahmad Raza Shibli',
+        resumeData.profile?.name || 'John Doe',
         jobDescription.substring(0, 40)
       );
       return NextResponse.json(mockReport);

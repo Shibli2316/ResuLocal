@@ -282,7 +282,7 @@ export default function EditorForm() {
               <Input 
                 value={data.profile.name} 
                 onChange={(e) => updateProfileField('name', e.target.value)} 
-                placeholder="Ahmad Raza Shibli"
+                placeholder="John Doe"
               />
             </div>
             <div className="col-span-2">

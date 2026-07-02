@@ -386,30 +386,30 @@ export default function EditorWorkspace() {
                   className="text-[11px] h-7 font-bold hover:!text-teal-600"
                   onClick={() => {
                     applyTemplateLayout(1);
-                    message.success('Applied Template Preset 1 layout!');
+                    message.success('Applied - Default layout preset!');
                   }}
                 >
-                  Template 1
+                  Default
                 </Button>
                 <Button 
                   size="small" 
                   className="text-[11px] h-7 font-bold hover:!text-teal-600"
                   onClick={() => {
                     applyTemplateLayout(2);
-                    message.success('Applied Template Preset 2 layout!');
+                    message.success('Applied - Experience layout preset!');
                   }}
                 >
-                  Template 2
+                  Experience
                 </Button>
                 <Button 
                   size="small" 
                   className="text-[11px] h-7 font-bold hover:!text-teal-600"
                   onClick={() => {
                     applyTemplateLayout(3);
-                    message.success('Applied Template Preset 3 layout!');
+                    message.success('Applied Fresher layout preset!');
                   }}
                 >
-                  Template 3
+                  Fresher
                 </Button>
               </Space>
             </div>

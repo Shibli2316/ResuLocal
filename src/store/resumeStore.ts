@@ -169,119 +169,112 @@ interface ResumeState {
   removeFromLibrary: (id: string) => void;
 }
 
-const defaultAhmadData: ResumeData = {
+const defaultDummyData: ResumeData = {
   profile: {
-    name: 'Ahmad Raza Shibli',
-    role: 'Working Student',
-    summary: 'Master’s student in Applied CS at Georg-August Universität Göttingen specializing in software development, ML, and freelance projects. Proficient in Python and C++, and passionate about video editing, reading, and traveling.',
+    name: 'John Doe',
+    role: 'Software Engineer',
+    summary: 'Detail-oriented Software Engineer with a strong background in developing scalable web applications, machine learning integration, and frontend systems. Passionate about writing clean, maintainable code and solving complex technical challenges.',
     links: [
-      { id: 'lnk-1', type: 'email', label: 'arshibli19@gmail.com', url: 'mailto:arshibli19@gmail.com' },
-      { id: 'lnk-2', type: 'phone', label: '015214990547', url: 'tel:015214990547' },
-      { id: 'lnk-3', type: 'location', label: 'Gottingen, Germany', url: 'https://maps.google.com/?q=Gottingen,%20Germany' },
-      { id: 'lnk-4', type: 'github', label: 'github.com/Shibli2316', url: 'https://github.com/Shibli2316' }
+      { id: 'lnk-1', type: 'email', label: 'john.doe@example.com', url: 'mailto:john.doe@example.com' },
+      { id: 'lnk-2', type: 'phone', label: '+49 123 4567890', url: 'tel:+491234567890' },
+      { id: 'lnk-3', type: 'location', label: 'Berlin, Germany', url: 'https://maps.google.com/?q=Berlin,%20Germany' },
+      { id: 'lnk-4', type: 'github', label: 'github.com/johndoe', url: 'https://github.com/johndoe' }
     ]
   },
   education: [
     {
       id: 'edu-1',
-      school: 'University of Gottingen',
-      degree: 'Masters In Applied Computer Science',
-      startDate: '04/2024',
+      school: 'Technical University of Berlin',
+      degree: 'Masters In Computer Science',
+      startDate: '10/2024',
       endDate: 'Present',
-      location: 'Gottingen, Germany'
+      location: 'Berlin, Germany'
     },
     {
       id: 'edu-2',
-      school: 'Aligarh Muslim University',
+      school: 'State University',
       degree: 'Bachelors in Computer Applications',
       startDate: '08/2020',
       endDate: '07/2023',
-      location: 'Aligarh, India'
+      location: 'Munich, Germany'
     }
   ],
   experience: [
     {
       id: 'exp-1',
-      company: 'Göttingen Digital Academy',
+      company: 'Tech Innovations GmbH',
       position: 'Software Developer',
-      startDate: '10/2025',
+      startDate: '11/2025',
       endDate: 'Present',
-      location: 'Göttingen, Germany',
+      location: 'Berlin, Germany',
       highlights: [
-        'Contributed to the digitalization of historical papal charters by implementing geocoding features and optimizing database filtering and query performance for efficient archival data management and visualization.',
-        'Developed LiMoST, a modernized end-to-end web interface for the Motiv-, Stoff- und Themenbibliographie system, improving the original 2002 platform through enhanced UI/UX, frontend integration, and streamlined user navigation.'
+        'Contributed to a cloud-based web application, optimizing database search query speeds by 40% and improving page load latency.',
+        'Developed a modernization prototype for the customer dashboard using React, Tailwind CSS, and Next.js, significantly improving UI/UX responsiveness.'
       ]
     },
     {
       id: 'exp-2',
-      company: 'SS AMU SAT',
+      company: 'Alpha Web Solutions',
       position: 'Web Lead',
       startDate: '10/2023',
       endDate: '05/2024',
-      location: 'Aligarh, India',
+      location: 'Munich, Germany',
       highlights: [
-        'Led end-to-end development of satellite operations software, including backend systems, database design, and responsive front-end interfaces using modern web technologies.',
-        'Built secure and optimized systems for telemetry and mission-control data management, while collaborating with interdisciplinary teams to integrate software with satellite hardware and ground systems.'
+        'Led front-end development of multiple responsive web interfaces, collaborating with design and product teams to deliver high-quality user experiences.',
+        'Integrated third-party RESTful APIs, securing authentication and authorization mechanisms using OAuth 2.0.'
       ]
     }
   ],
   projects: [
     {
       id: 'proj-1',
-      name: 'Driver Drowsiness Detection System',
+      name: 'Smart Home IoT Dashboard',
       startDate: '02/2023',
       endDate: '02/2023',
       highlights: [
-        'Co-developed a Driver Drowsiness Detection System using OpenCV and Pygame. Implemented real-time eye monitoring, customizable alert thresholds, and automated audio alerts with an intuitive user interface.'
+        'Co-developed a real-time smart home monitoring dashboard using React, Node.js, and WebSocket connection for low-latency updates.'
       ]
     },
     {
       id: 'proj-2',
-      name: 'SMART (Student Management and Retention Technology)',
+      name: 'Task Management Web App',
       startDate: '09/2022',
       endDate: '11/2022',
       highlights: [
-        'Developed a LAMP-based web application to manage the complete student lifecycle, from admission to alumni transition. Integrated Arduino-powered dynamic timetables, course selection, study material access, and responsive UI design using Tailwind CSS.'
+        'Developed a full-stack task management system with user authentication, custom categorization, and drag-and-drop workflow functionality.'
       ]
     }
   ],
   skills: [
-    { id: 'sk-1', name: 'Languages', items: 'Python, C++, Java, Bash(Linux)' },
-    { id: 'sk-2', name: 'Databases', items: 'MySQL, PostgreSQL, MongoDB, Firebase' },
-    { id: 'sk-3', name: 'Machine Learning/Deep Learning', items: 'NumPy, Terraform, OpenCV' },
-    { id: 'sk-4', name: 'Frontend', items: 'React, Tailwind, JavaScript, Material UI, Redux' },
-    { id: 'sk-5', name: 'Backend', items: 'Laravel, JS, Flask, PHP' },
-    { id: 'sk-6', name: 'Version Control and Automation', items: 'Git, n8n' },
-    { id: 'sk-7', name: 'IoT', items: 'Arduino, Raspberry Pi, ESP32, Hailo-8L' },
-    { id: 'sk-8', name: 'Cloud', items: 'Google Cloud, Heroku' }
+    { id: 'sk-1', name: 'Languages', items: 'Python, JavaScript, TypeScript, Go, C++' },
+    { id: 'sk-2', name: 'Databases', items: 'PostgreSQL, MongoDB, Redis, MySQL' },
+    { id: 'sk-3', name: 'Frameworks & Libraries', items: 'React, Next.js, Express, Tailwind CSS, Redux' },
+    { id: 'sk-4', name: 'Cloud & DevOps', items: 'Docker, Kubernetes, AWS, Git' }
   ],
   publications: [
-    { id: 'pub-1', title: 'Diagnosing coronaviruses (COVID-19) using machine learning.' },
-    { id: 'pub-2', title: 'Machine Learning-Based Predictive Modeling of Student Counseling Gratification: A Case Study of AMU.' },
-    { id: 'pub-3', title: 'A Novel Approach to Key Exchange: Dual-Secured Diffie-Hellman with RSA Integration.' },
-    { id: 'pub-4', title: 'Ubiquitous Computing with Radio Frequency Identification Tags.' }
+    { id: 'pub-1', title: 'A Comparative Study on Microservices Architecture and Monolithic Applications.' },
+    { id: 'pub-2', title: 'Designing Secure API Gateways for Modern Web Services.' }
   ],
   organizations: [
     {
       id: 'org-1',
-      name: 'Google Students Developer Club',
-      role: 'ML Lead and Mentor',
+      name: 'Open Source Community',
+      role: 'Contributor',
       startDate: '04/2021',
       endDate: '10/2024',
-      description: 'Organized and mentored multiple technical events, serving in leadership roles including ML Lead and Mentor during the final year.'
+      description: 'Mentored new contributors, maintained documentation, and contributed features to popular open-source packages.'
     }
   ],
   certifications: [
-    { id: 'cert-1', name: 'Python for Data Science, AI & Development', issuer: 'IBM' },
-    { id: 'cert-2', name: 'Developing AI Applications with Python and Flask', issuer: 'IBM' }
+    { id: 'cert-1', name: 'Certified Solutions Architect', issuer: 'AWS' },
+    { id: 'cert-2', name: 'Full Stack Developer Certification', issuer: 'Meta' }
   ],
   languages: [
     { id: 'lang-1', name: 'English', proficiency: 'Native or Bilingual Proficiency' },
     { id: 'lang-2', name: 'German', proficiency: 'Limited Working Proficiency' },
-    { id: 'lang-3', name: 'Hindi', proficiency: 'Native or Bilingual Proficiency' },
-    { id: 'lang-4', name: 'Urdu', proficiency: 'Native or Bilingual Proficiency' }
+    { id: 'lang-3', name: 'Spanish', proficiency: 'Professional Working Proficiency' }
   ],
-  interests: ['Traveling', 'Hiking', 'Reading'],
+  interests: ['Open Source Contribution', 'Hiking', 'Reading'],
   customSections: []
 };
 
@@ -313,15 +306,15 @@ export const useResumeStore = create<ResumeState>()(
     (set, get) => ({
       resumes: [
         {
-          id: 'ahmad-student',
-          title: 'Ahmad - Working Student',
+          id: 'dummy-resume',
+          title: 'Default Professional Resume',
           updatedAt: new Date().toISOString(),
-          data: defaultAhmadData,
+          data: defaultDummyData,
           style: defaultStyle,
           sections: [...defaultSectionsOrder]
         }
       ],
-      currentResumeId: 'ahmad-student',
+      currentResumeId: 'dummy-resume',
       contentLibrary: [
         {
           id: 'lib-1',

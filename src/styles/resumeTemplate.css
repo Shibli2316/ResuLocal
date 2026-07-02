@@ -118,6 +118,7 @@
   font-size: calc(var(--resume-font-size) - 1px);
   gap: 5px;
   color: var(--resume-text-dark);
+  align-self: center;
 }
 
 .resume-name {
