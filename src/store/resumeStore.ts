@@ -173,6 +173,11 @@ interface ResumeState {
   isUserApiKeyVerified: boolean;
   setUserApiKey: (key: string | null) => void;
   setApiKeyVerified: (verified: boolean) => void;
+
+  // Authentication state and actions
+  user: { name: string; email: string; avatarUrl?: string } | null;
+  loginUser: (name: string, email: string, avatarUrl?: string) => void;
+  logoutUser: () => void;
 }
 
 const defaultDummyData: ResumeData = {
@@ -337,6 +342,11 @@ export const useResumeStore = create<ResumeState>()(
       isUserApiKeyVerified: false,
       setUserApiKey: (key) => set({ userApiKey: key }),
       setApiKeyVerified: (verified) => set({ isUserApiKeyVerified: verified }),
+
+      // Auth state initializers
+      user: null,
+      loginUser: (name, email, avatarUrl) => set({ user: { name, email, avatarUrl } }),
+      logoutUser: () => set({ user: null }),
 
       addResume: (title) => {
         const id = `resume-${Date.now()}`;

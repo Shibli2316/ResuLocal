@@ -15,15 +15,45 @@ import ResumePreview, { LayoutReport } from '../../components/ResumePreview';
 import ContentLibrary from '../../components/ContentLibrary';
 import AtsScorePanel from '../../components/AtsScorePanel';
 import CoverLetterTab from '../../components/CoverLetterTab';
+import Navbar from '../../components/Navbar';
 
 export default function EditorWorkspace() {
   const router = useRouter();
-  const { resumes, currentResumeId, updateResumeStyle, applyTemplateLayout } = useResumeStore();
+  const { resumes, currentResumeId, updateResumeStyle, applyTemplateLayout, user } = useResumeStore();
   const currentResume = resumes.find(r => r.id === currentResumeId);
 
   // Tracks layout analysis from Preview engine
   const [layoutReport, setLayoutReport] = useState<LayoutReport | null>(null);
   const [exportingPdf, setExportingPdf] = useState(false);
+
+  // Access check
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center p-6 text-center font-sans">
+        <div className="max-w-md bg-slate-900 border border-slate-850 p-8 rounded-2xl shadow-xl flex flex-col items-center">
+          <div className="relative flex items-center justify-center bg-gradient-to-tr from-teal-500 to-cyan-400 p-3.5 rounded-2xl shadow-lg shadow-teal-500/20 mb-6">
+            <svg className="w-8 h-8 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="currentColor" fillOpacity="0.2" />
+              <line x1="9" y1="7" x2="15" y2="7" />
+              <line x1="9" y1="10" x2="15" y2="10" />
+              <line x1="9" y1="13" x2="13" y2="13" />
+            </svg>
+          </div>
+          <h2 className="text-white font-extrabold text-xl mb-2">Access Restrained</h2>
+          <p className="text-slate-400 text-xs leading-relaxed mb-6">
+            You must log in to ResuLocal using your Google Account to access the workspace editor.
+          </p>
+          <Button 
+            type="primary"
+            onClick={() => router.push('/')}
+            className="!bg-teal-500 hover:!bg-teal-400 !border-0 text-slate-950 font-bold px-6 h-10 rounded-xl"
+          >
+            Go to Landing Page
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   if (!currentResume) {
     return (
@@ -99,6 +129,7 @@ export default function EditorWorkspace() {
 
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col">
+      <Navbar />
       {/* Editor Navbar */}
       <header className="bg-gradient-to-r from-teal-900 to-cyan-950 text-white px-4 py-3 flex items-center justify-between shadow-md">
         <div className="flex items-center gap-3">
